@@ -138,7 +138,6 @@
     <Compile Include="Math\Matrix2x3d.cs" />
     <Compile Include="Math\Matrix2x4.cs" />
     <Compile Include="Math\Matrix2x4d.cs" />
-    <Compile Include="Math\Matrix3.cs" />
     <Compile Include="Math\Matrix3x2.cs" />
     <Compile Include="Math\Matrix3x2d.cs" />
     <Compile Include="Math\Matrix3x4.cs" />
@@ -582,6 +581,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Math\Box2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Math\Matrix3.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Math\Matrix4.cs">
