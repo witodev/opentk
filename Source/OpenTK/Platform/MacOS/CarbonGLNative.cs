@@ -38,8 +38,8 @@ using OpenTK.Graphics;
 namespace OpenTK.Platform.MacOS
 {
     using Carbon;
-#if ANDROID || IPHONE || MINIMAL
-    using Minimal;
+#if MINIMAL
+    using OpenTK.Minimal;
     using Graphics = OpenTK.Minimal.Graphics;
 #else
     using Graphics = System.Drawing.Graphics;

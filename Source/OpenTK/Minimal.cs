@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-#if IPHONE || ANDROID || MINIMAL
-
 namespace OpenTK
 {
     // Override a number of System.* classes when compiling for
     // minimal targets (e.g. MonoTouch).
     // Note: the "overriden" classes must not be fully qualified for this to work!
 
+#if IPHONE || ANDROID || MINIMAL
     // System.Diagnostics.Debug
     static class Debug
     {
@@ -117,6 +116,8 @@ namespace OpenTK
     }
 
     #endregion
+
+#if MINIMAL
 
     #region PointF
 
@@ -669,6 +670,8 @@ namespace OpenTK
 
     #endregion
 
+#endif
+
     #region Icon
 
     public sealed class Icon : IDisposable
@@ -698,6 +701,8 @@ namespace OpenTK
     }
 
     #endregion
+
+#if MINIMAL
 
     #region Image
 
@@ -1643,6 +1648,8 @@ namespace OpenTK
 
     #endregion
 
+#endif
+
     #region SystemEvents
 
     sealed class SystemEvents
@@ -1675,6 +1682,5 @@ namespace OpenTK.Minimal
 
     #endregion
 }
-
-
 #endif
+}
