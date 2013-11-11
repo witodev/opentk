@@ -1,5 +1,6 @@
 //
 // Copyright (C) 2009 the Open Toolkit (http://www.opentk.com)
+// Copyright 2013 Xamarin Inc
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -131,7 +132,7 @@ namespace CHeaderToXML
                 if (path == null)
                 {
                     out_stream = Console.Out;
-                    Console.OutputEncoding = System.Text.Encoding.UTF8;
+                    Console.OutputEncoding = new System.Text.UTF8Encoding (false);
                 }
                 else
                 {
