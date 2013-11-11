@@ -1,5 +1,6 @@
 #region --- License ---
 /* Copyright (c) 2006, 2007 Stefanos Apostolopoulos
+ * Copyright 2013 Xamarin Inc
  * See license.txt for license info
  */
 #endregion
