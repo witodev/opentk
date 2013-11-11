@@ -3,6 +3,7 @@
 // The Open Toolkit Library License
 //
 // Copyright (c) 2006 - 2009 the Open Toolkit library.
+// Copyright 2013 Xamarin Inc
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -39,10 +40,12 @@ namespace OpenTK
     /// </summary>
     public interface INativeWindow : IDisposable
     {
+#if !IPHONE
         /// <summary>
         /// Gets or sets the <see cref="System.Drawing.Icon"/> of the window.
         /// </summary>
         Icon Icon { get; set; }
+#endif
 
         /// <summary>
         /// Gets or sets the title of the window.
@@ -126,11 +129,13 @@ namespace OpenTK
         /// </summary>
         Size ClientSize { get; set; }
 
+#if !IPHONE
         /// <summary>
         /// This property is deprecated and should not be used.
         /// </summary>
         [Obsolete]
         OpenTK.Input.IInputDriver InputDriver { get; }
+#endif
 
         /// <summary>
         /// Gets or sets a value, indicating whether the mouse cursor is visible.
@@ -199,10 +204,12 @@ namespace OpenTK
         /// </summary>
         event EventHandler<EventArgs> Disposed;
 
+#if !IPHONE
         /// <summary>
         /// Occurs when the <see cref="Icon"/> property of the window changes. 
         /// </summary>
         event EventHandler<EventArgs> IconChanged;
+#endif
 
         /// <summary>
         /// Occurs when the <see cref="Title"/> property of the window changes.
@@ -234,6 +241,7 @@ namespace OpenTK
         /// </summary>
         event EventHandler<OpenTK.Input.KeyboardKeyEventArgs> KeyDown;
 
+#if !IPHONE
         /// <summary>
         /// Occurs whenever a character is typed.
         /// </summary>
@@ -265,5 +273,6 @@ namespace OpenTK
         //event EventHandler<DragEventArgs> DragEnter;
         //event EventHandler<DragEventArgs> DragOver;
         //event EventHandler<EventArgs> DragLeave;
+#endif
     }
 }
