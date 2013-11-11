@@ -3,6 +3,7 @@
 // The Open Toolkit Library License
 //
 // Copyright (c) 2006 - 2010 the Open Toolkit library.
+// Copyright 2013 Xamarin Inc
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -369,6 +370,7 @@ namespace Bind
             }
         }
         Dictionary<string, string> docfiles;
+
         void WriteDocumentation(BindStreamWriter sw, Function f)
         {
             if (docfiles == null)
