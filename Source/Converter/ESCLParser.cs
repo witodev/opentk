@@ -326,7 +326,7 @@ namespace CHeaderToXML
                     var count = has_array_size ? Int32.Parse(array_size.Match(param_name).Value.Trim('[', ']')) : 0;
                     var flow =
                         param_name.EndsWith("ret") ||
-+ #if !IPHONE
+#if !IPHONE
                         ((funcname.StartsWith("Get") || funcname.StartsWith("Gen")) &&
                             indirection_level > 0 &&
                             !(funcname.EndsWith("Info") || funcname.EndsWith("IDs") || funcname.EndsWith("ImageFormats"))) ? // OpenCL contains Get*[Info|IDs|ImageFormats] methods with 'in' pointer parameters
