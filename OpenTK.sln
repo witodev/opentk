@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTK.Graphics.ES30", "Sou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTK.Audio.OpenAL", "Source\OpenTK.Audio.OpenAL\OpenTK.Audio.OpenAL.csproj", "{B8C4BFD3-EF95-468E-8FEC-BF479FD90DC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTK.Compute.CL10", "Source\OpenTK.Compute.CL10\OpenTK.Compute.CL10.csproj", "{F206B983-ACFE-417D-8ABE-8E209EF69349}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -245,6 +247,14 @@ Global
 		{B8C4BFD3-EF95-468E-8FEC-BF479FD90DC8}.Nsis|Any CPU.Build.0 = Release|Any CPU
 		{B8C4BFD3-EF95-468E-8FEC-BF479FD90DC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8C4BFD3-EF95-468E-8FEC-BF479FD90DC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F206B983-ACFE-417D-8ABE-8E209EF69349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F206B983-ACFE-417D-8ABE-8E209EF69349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F206B983-ACFE-417D-8ABE-8E209EF69349}.Documentation|Any CPU.ActiveCfg = Debug|Any CPU
+		{F206B983-ACFE-417D-8ABE-8E209EF69349}.Documentation|Any CPU.Build.0 = Debug|Any CPU
+		{F206B983-ACFE-417D-8ABE-8E209EF69349}.Nsis|Any CPU.ActiveCfg = Release|Any CPU
+		{F206B983-ACFE-417D-8ABE-8E209EF69349}.Nsis|Any CPU.Build.0 = Release|Any CPU
+		{F206B983-ACFE-417D-8ABE-8E209EF69349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F206B983-ACFE-417D-8ABE-8E209EF69349}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -46,138 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\OpenTK\Input\Buttons.cs">
-      <Link>Input\Buttons.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\ButtonState.cs">
-      <Link>Input\ButtonState.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\ConfigurationType.cs">
-      <Link>Input\ConfigurationType.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePad.cs">
-      <Link>Input\GamePad.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadAxes.cs">
-      <Link>Input\GamePadAxes.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadButtons.cs">
-      <Link>Input\GamePadButtons.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadCapabilities.cs">
-      <Link>Input\GamePadCapabilities.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadConfiguration.cs">
-      <Link>Input\GamePadConfiguration.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadConfigurationDatabase.cs">
-      <Link>Input\GamePadConfigurationDatabase.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadConfigurationItem.cs">
-      <Link>Input\GamePadConfigurationItem.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadConfigurationSource.cs">
-      <Link>Input\GamePadConfigurationSource.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadConfigurationTarget.cs">
-      <Link>Input\GamePadConfigurationTarget.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadDPad.cs">
-      <Link>Input\GamePadDPad.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadState.cs">
-      <Link>Input\GamePadState.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadThumbSticks.cs">
-      <Link>Input\GamePadThumbSticks.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadTriggers.cs">
-      <Link>Input\GamePadTriggers.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\GamePadType.cs">
-      <Link>Input\GamePadType.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\IGamePadDriver.cs">
-      <Link>Input\IGamePadDriver.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\IInputDevice.cs">
-      <Link>Input\IInputDevice.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\IInputDriver.cs">
-      <Link>Input\IInputDriver.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\IInputDriver2.cs">
-      <Link>Input\IInputDriver2.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\IJoystickDriver.cs">
-      <Link>Input\IJoystickDriver.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\IJoystickDriver2.cs">
-      <Link>Input\IJoystickDriver2.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\IKeyboardDriver.cs">
-      <Link>Input\IKeyboardDriver.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\IKeyboardDriver2.cs">
-      <Link>Input\IKeyboardDriver2.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\IMouseDriver.cs">
-      <Link>Input\IMouseDriver.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\IMouseDriver2.cs">
-      <Link>Input\IMouseDriver2.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\Joystick.cs">
-      <Link>Input\Joystick.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\JoystickAxis.cs">
-      <Link>Input\JoystickAxis.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\JoystickButton.cs">
-      <Link>Input\JoystickButton.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\JoystickCapabilities.cs">
-      <Link>Input\JoystickCapabilities.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\JoystickDevice.cs">
-      <Link>Input\JoystickDevice.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\JoystickState.cs">
-      <Link>Input\JoystickState.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\Key.cs">
-      <Link>Input\Key.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\Keyboard.cs">
-      <Link>Input\Keyboard.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\KeyboardDevice.cs">
-      <Link>Input\KeyboardDevice.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\KeyboardKeyEventArgs.cs">
-      <Link>Input\KeyboardKeyEventArgs.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\KeyboardState.cs">
-      <Link>Input\KeyboardState.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\Mouse.cs">
-      <Link>Input\Mouse.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\MouseButton.cs">
-      <Link>Input\MouseButton.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\MouseDevice.cs">
-      <Link>Input\MouseDevice.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Input\MouseState.cs">
-      <Link>Input\MouseState.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Platform\Dummy\DummyGLContext.cs">
-      <Link>Platform\Dummy\DummyGLContext.cs</Link>
-    </Compile>
-    <Compile Include="..\OpenTK\Platform\Dummy\DummyWindowInfo.cs">
-      <Link>Platform\Dummy\DummyWindowInfo.cs</Link>
-    </Compile>
     <Compile Include="AutoGeneratedAttribute.cs" />
     <Compile Include="BindingsBase.cs" />
     <Compile Include="BlittableValueType.cs" />
@@ -207,6 +75,48 @@
     <Compile Include="Graphics\IGraphicsMode.cs" />
     <Compile Include="IGameWindow.cs" />
     <Compile Include="INativeWindow.cs" />
+    <Compile Include="Input\Buttons.cs" />
+    <Compile Include="Input\ButtonState.cs" />
+    <Compile Include="Input\ConfigurationType.cs" />
+    <Compile Include="Input\GamePad.cs" />
+    <Compile Include="Input\GamePadAxes.cs" />
+    <Compile Include="Input\GamePadButtons.cs" />
+    <Compile Include="Input\GamePadCapabilities.cs" />
+    <Compile Include="Input\GamePadConfiguration.cs" />
+    <Compile Include="Input\GamePadConfigurationDatabase.cs" />
+    <Compile Include="Input\GamePadConfigurationItem.cs" />
+    <Compile Include="Input\GamePadConfigurationSource.cs" />
+    <Compile Include="Input\GamePadConfigurationTarget.cs" />
+    <Compile Include="Input\GamePadDPad.cs" />
+    <Compile Include="Input\GamePadState.cs" />
+    <Compile Include="Input\GamePadThumbSticks.cs" />
+    <Compile Include="Input\GamePadTriggers.cs" />
+    <Compile Include="Input\GamePadType.cs" />
+    <Compile Include="Input\IGamePadDriver.cs" />
+    <Compile Include="Input\IInputDevice.cs" />
+    <Compile Include="Input\IInputDriver.cs" />
+    <Compile Include="Input\IInputDriver2.cs" />
+    <Compile Include="Input\IJoystickDriver.cs" />
+    <Compile Include="Input\IJoystickDriver2.cs" />
+    <Compile Include="Input\IKeyboardDriver.cs" />
+    <Compile Include="Input\IKeyboardDriver2.cs" />
+    <Compile Include="Input\IMouseDriver.cs" />
+    <Compile Include="Input\IMouseDriver2.cs" />
+    <Compile Include="Input\Joystick.cs" />
+    <Compile Include="Input\JoystickAxis.cs" />
+    <Compile Include="Input\JoystickButton.cs" />
+    <Compile Include="Input\JoystickCapabilities.cs" />
+    <Compile Include="Input\JoystickDevice.cs" />
+    <Compile Include="Input\JoystickState.cs" />
+    <Compile Include="Input\Key.cs" />
+    <Compile Include="Input\Keyboard.cs" />
+    <Compile Include="Input\KeyboardDevice.cs" />
+    <Compile Include="Input\KeyboardKeyEventArgs.cs" />
+    <Compile Include="Input\KeyboardState.cs" />
+    <Compile Include="Input\Mouse.cs" />
+    <Compile Include="Input\MouseButton.cs" />
+    <Compile Include="Input\MouseDevice.cs" />
+    <Compile Include="Input\MouseState.cs" />
     <Compile Include="InteropHelper.cs" />
     <Compile Include="IntPtrEqualityComparer.cs" />
     <Compile Include="KeyPressEventArgs.cs" />
@@ -254,6 +164,12 @@
     <Compile Include="Platform\DesktopGraphicsContext.cs" />
     <Compile Include="DisplayDevice.cs" />
     <Compile Include="Platform\DisplayDeviceBase.cs" />
+    <Compile Include="Platform\Dummy\DummyGLContext.cs" />
+    <Compile Include="Platform\Dummy\DummyWindowInfo.cs" />
+    <Compile Include="Platform\Egl\Egl.cs" />
+    <Compile Include="Platform\Egl\EglContext.cs" />
+    <Compile Include="Platform\Egl\EglGraphicsMode.cs" />
+    <Compile Include="Platform\Egl\EglWindowInfo.cs" />
     <Compile Include="Platform\EmbeddedGraphicsContext.cs" />
     <Compile Include="Platform\Factory.cs" />
     <Compile Include="Platform\IDisplayDeviceDriver.cs" />

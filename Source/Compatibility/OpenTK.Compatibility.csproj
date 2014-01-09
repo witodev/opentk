@@ -127,15 +127,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenTK\OpenTK.csproj">
-      <Name>OpenTK</Name>
-      <Project>{A37A7E14-0000-0000-0000-000000000000}</Project>
-      <Private>False</Private>
-    </ProjectReference>
     <ProjectReference Include="..\GLControl\OpenTK.GLControl.csproj">
       <Name>OpenTK.GLControl</Name>
       <Project>{A625BE88-0000-0000-0000-000000000000}</Project>
       <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Core\OpenTK.Core.csproj">
+      <Project>{7f5f3bdb-0445-4a42-adcb-4fc27208353d}</Project>
+      <Name>OpenTK.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

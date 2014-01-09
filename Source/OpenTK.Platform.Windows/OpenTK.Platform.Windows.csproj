@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API.cs" />
+    <Compile Include="EglWinPlatformFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wgl.cs" />
     <Compile Include="WglDelegates.cs" />

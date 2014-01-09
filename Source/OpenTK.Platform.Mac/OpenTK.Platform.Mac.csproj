@@ -53,6 +53,7 @@
     <Compile Include="CarbonWindowInfo.cs" />
     <Compile Include="Cgl.cs" />
     <Compile Include="CoreFoundation.cs" />
+    <Compile Include="EglMacPlatformFactory.cs" />
     <Compile Include="EventInfo.cs" />
     <Compile Include="HIDInput.cs" />
     <Compile Include="MacOSException.cs" />

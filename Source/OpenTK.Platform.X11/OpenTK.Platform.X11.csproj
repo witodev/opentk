@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API.cs" />
+    <Compile Include="EglX11PlatformFactory.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="Glx.cs" />
     <Compile Include="GlxHelper.cs" />
