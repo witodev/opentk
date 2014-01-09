@@ -124,13 +124,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenTK\OpenTK.csproj">
-      <Name>OpenTK</Name>
-      <Project>{A37A7E14-0000-0000-0000-000000000000}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\GLControl\OpenTK.GLControl.csproj">
       <Name>OpenTK.GLControl</Name>
       <Project>{A625BE88-0000-0000-0000-000000000000}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Audio.OpenAL\OpenTK.Audio.OpenAL.csproj">
+      <Project>{b8c4bfd3-ef95-468e-8fec-bf479fd90dc8}</Project>
+      <Name>OpenTK.Audio.OpenAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Compute.CL10\OpenTK.Compute.CL10.csproj">
+      <Project>{f206b983-acfe-417d-8abe-8e209ef69349}</Project>
+      <Name>OpenTK.Compute.CL10</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Core\OpenTK.Core.csproj">
+      <Project>{7f5f3bdb-0445-4a42-adcb-4fc27208353d}</Project>
+      <Name>OpenTK.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Graphics.ES11\OpenTK.Graphics.ES11.csproj">
+      <Project>{23bca32b-7683-4fc3-9189-bf09d20515de}</Project>
+      <Name>OpenTK.Graphics.ES11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Graphics.ES20\OpenTK.Graphics.ES20.csproj">
+      <Project>{e030c2ab-12e5-46f8-a4f0-3b03b4c2c8ba}</Project>
+      <Name>OpenTK.Graphics.ES20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Graphics.OpenGL\OpenTK.Graphics.OpenGL.csproj">
+      <Project>{4186d2bd-1cde-4277-9e75-4c4c92f9bbb5}</Project>
+      <Name>OpenTK.Graphics.OpenGL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Platform.SDL2\OpenTK.Platform.SDL2.csproj">
+      <Project>{44d7882f-e0d4-4976-9adb-6b5977e54439}</Project>
+      <Name>OpenTK.Platform.SDL2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Platform.Windows\OpenTK.Platform.Windows.csproj">
+      <Project>{9fcba0ca-7823-40ba-9955-58b2c287ad4b}</Project>
+      <Name>OpenTK.Platform.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Platform.X11\OpenTK.Platform.X11.csproj">
+      <Project>{ce2588dd-4c88-4aa0-812f-d6310f363b39}</Project>
+      <Name>OpenTK.Platform.X11</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
