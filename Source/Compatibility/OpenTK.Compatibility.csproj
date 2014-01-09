@@ -132,9 +132,17 @@
       <Project>{A625BE88-0000-0000-0000-000000000000}</Project>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Audio.OpenAL\OpenTK.Audio.OpenAL.csproj">
+      <Project>{b8c4bfd3-ef95-468e-8fec-bf479fd90dc8}</Project>
+      <Name>OpenTK.Audio.OpenAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenTK.Core\OpenTK.Core.csproj">
       <Project>{7f5f3bdb-0445-4a42-adcb-4fc27208353d}</Project>
       <Name>OpenTK.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTK.Graphics.OpenGL\OpenTK.Graphics.OpenGL.csproj">
+      <Project>{4186d2bd-1cde-4277-9e75-4c4c92f9bbb5}</Project>
+      <Name>OpenTK.Graphics.OpenGL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
