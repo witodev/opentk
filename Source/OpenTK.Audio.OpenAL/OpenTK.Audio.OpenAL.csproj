@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B8C4BFD3-EF95-468E-8FEC-BF479FD90DC8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenTK.Audio.OpenAL</RootNamespace>
+    <AssemblyName>OpenTK.Audio.OpenAL</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Binaries\OpenTK\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\..\Binaries\OpenTK\Debug\OpenTK.Audio.OpenAL.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Binaries\OpenTK\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\..\Binaries\OpenTK\Release\OpenTK.Audio.OpenAL.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\OpenTK.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AudioCapture.cs" />
+    <Compile Include="AudioContext.cs" />
+    <Compile Include="AudioContextException.cs" />
+    <Compile Include="AudioDeviceEnumerator.cs" />
+    <Compile Include="AudioDeviceErrorChecker.cs" />
+    <Compile Include="AudioDeviceException.cs" />
+    <Compile Include="AudioException.cs" />
+    <Compile Include="AudioValueException.cs" />
+    <Compile Include="OpenAL\Alc\Alc.cs" />
+    <Compile Include="OpenAL\Alc\AlcEnums.cs" />
+    <Compile Include="OpenAL\AL\AL.cs" />
+    <Compile Include="OpenAL\AL\ALEnums.cs" />
+    <Compile Include="OpenAL\AL\EffectsExtension.cs" />
+    <Compile Include="OpenAL\AL\EffectsExtensionEnums.cs" />
+    <Compile Include="OpenAL\AL\EffectsExtensionPresets.cs" />
+    <Compile Include="OpenAL\AL\XRamExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\OpenTK.snk">
+      <Link>OpenTK.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenTK.Core\OpenTK.Core.csproj">
+      <Project>{7f5f3bdb-0445-4a42-adcb-4fc27208353d}</Project>
+      <Name>OpenTK.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

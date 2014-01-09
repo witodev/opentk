@@ -107,12 +107,15 @@ namespace OpenTK.Platform.Dummy
 
         public override void LoadAll()
         {
+             throw new NotImplementedException();
+#if MODULARIZED
             new OpenTK.Graphics.OpenGL.GL().LoadEntryPoints();
             new OpenTK.Graphics.OpenGL4.GL().LoadEntryPoints();
             new OpenTK.Graphics.ES10.GL().LoadEntryPoints();
             new OpenTK.Graphics.ES11.GL().LoadEntryPoints();
             new OpenTK.Graphics.ES20.GL().LoadEntryPoints();
             new OpenTK.Graphics.ES30.GL().LoadEntryPoints();
+#endif
         }
 
         #endregion

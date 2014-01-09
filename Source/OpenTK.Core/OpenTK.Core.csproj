@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7F5F3BDB-0445-4A42-ADCB-4FC27208353D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenTK.Core</RootNamespace>
+    <AssemblyName>OpenTK.Core</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Binaries\Modules\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\..\Binaries\Modules\Debug\OpenTK.Core.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Binaries\Modules\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\..\Binaries\Modules\Release\OpenTK.Core.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\OpenTK.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\OpenTK\Input\Buttons.cs">
+      <Link>Input\Buttons.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\ButtonState.cs">
+      <Link>Input\ButtonState.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\ConfigurationType.cs">
+      <Link>Input\ConfigurationType.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePad.cs">
+      <Link>Input\GamePad.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadAxes.cs">
+      <Link>Input\GamePadAxes.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadButtons.cs">
+      <Link>Input\GamePadButtons.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadCapabilities.cs">
+      <Link>Input\GamePadCapabilities.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadConfiguration.cs">
+      <Link>Input\GamePadConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadConfigurationDatabase.cs">
+      <Link>Input\GamePadConfigurationDatabase.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadConfigurationItem.cs">
+      <Link>Input\GamePadConfigurationItem.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadConfigurationSource.cs">
+      <Link>Input\GamePadConfigurationSource.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadConfigurationTarget.cs">
+      <Link>Input\GamePadConfigurationTarget.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadDPad.cs">
+      <Link>Input\GamePadDPad.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadState.cs">
+      <Link>Input\GamePadState.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadThumbSticks.cs">
+      <Link>Input\GamePadThumbSticks.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadTriggers.cs">
+      <Link>Input\GamePadTriggers.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\GamePadType.cs">
+      <Link>Input\GamePadType.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\IGamePadDriver.cs">
+      <Link>Input\IGamePadDriver.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\IInputDevice.cs">
+      <Link>Input\IInputDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\IInputDriver.cs">
+      <Link>Input\IInputDriver.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\IInputDriver2.cs">
+      <Link>Input\IInputDriver2.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\IJoystickDriver.cs">
+      <Link>Input\IJoystickDriver.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\IJoystickDriver2.cs">
+      <Link>Input\IJoystickDriver2.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\IKeyboardDriver.cs">
+      <Link>Input\IKeyboardDriver.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\IKeyboardDriver2.cs">
+      <Link>Input\IKeyboardDriver2.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\IMouseDriver.cs">
+      <Link>Input\IMouseDriver.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\IMouseDriver2.cs">
+      <Link>Input\IMouseDriver2.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\Joystick.cs">
+      <Link>Input\Joystick.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\JoystickAxis.cs">
+      <Link>Input\JoystickAxis.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\JoystickButton.cs">
+      <Link>Input\JoystickButton.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\JoystickCapabilities.cs">
+      <Link>Input\JoystickCapabilities.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\JoystickDevice.cs">
+      <Link>Input\JoystickDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\JoystickState.cs">
+      <Link>Input\JoystickState.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\Key.cs">
+      <Link>Input\Key.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\Keyboard.cs">
+      <Link>Input\Keyboard.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\KeyboardDevice.cs">
+      <Link>Input\KeyboardDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\KeyboardKeyEventArgs.cs">
+      <Link>Input\KeyboardKeyEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\KeyboardState.cs">
+      <Link>Input\KeyboardState.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\Mouse.cs">
+      <Link>Input\Mouse.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\MouseButton.cs">
+      <Link>Input\MouseButton.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\MouseDevice.cs">
+      <Link>Input\MouseDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Input\MouseState.cs">
+      <Link>Input\MouseState.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Platform\Dummy\DummyGLContext.cs">
+      <Link>Platform\Dummy\DummyGLContext.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK\Platform\Dummy\DummyWindowInfo.cs">
+      <Link>Platform\Dummy\DummyWindowInfo.cs</Link>
+    </Compile>
+    <Compile Include="AutoGeneratedAttribute.cs" />
+    <Compile Include="BindingsBase.cs" />
+    <Compile Include="BlittableValueType.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="ContextHandle.cs" />
+    <Compile Include="DisplayIndex.cs" />
+    <Compile Include="DisplayResolution.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="FrameEventArgs.cs" />
+    <Compile Include="GameWindow.cs" />
+    <Compile Include="GameWindowFlags.cs" />
+    <Compile Include="Graphics\Color4.cs" />
+    <Compile Include="Graphics\ColorFormat.cs" />
+    <Compile Include="Graphics\GraphicsBindingsBase.cs" />
+    <Compile Include="Graphics\GraphicsContext.cs" />
+    <Compile Include="Graphics\GraphicsContextBase.cs" />
+    <Compile Include="Graphics\GraphicsContextException.cs" />
+    <Compile Include="Graphics\GraphicsContextFlags.cs" />
+    <Compile Include="Graphics\GraphicsContextMissingException.cs" />
+    <Compile Include="Graphics\GraphicsContextVersion.cs" />
+    <Compile Include="Graphics\GraphicsErrorException.cs" />
+    <Compile Include="Graphics\GraphicsExceptions.cs" />
+    <Compile Include="Graphics\GraphicsMode.cs" />
+    <Compile Include="Graphics\GraphicsModeComparer.cs" />
+    <Compile Include="Graphics\GraphicsModeException.cs" />
+    <Compile Include="Graphics\IGraphicsContext.cs" />
+    <Compile Include="Graphics\IGraphicsMode.cs" />
+    <Compile Include="IGameWindow.cs" />
+    <Compile Include="INativeWindow.cs" />
+    <Compile Include="InteropHelper.cs" />
+    <Compile Include="IntPtrEqualityComparer.cs" />
+    <Compile Include="KeyPressEventArgs.cs" />
+    <Compile Include="Math\BezierCurve.cs" />
+    <Compile Include="Math\BezierCurveCubic.cs" />
+    <Compile Include="Math\BezierCurveQuadric.cs" />
+    <Compile Include="Math\Box2.cs" />
+    <Compile Include="Math\Functions.cs" />
+    <Compile Include="Math\Half.cs" />
+    <Compile Include="Math\MathHelper.cs" />
+    <Compile Include="Math\Matrix2.cs" />
+    <Compile Include="Math\Matrix2d.cs" />
+    <Compile Include="Math\Matrix2x3.cs" />
+    <Compile Include="Math\Matrix2x3d.cs" />
+    <Compile Include="Math\Matrix2x4.cs" />
+    <Compile Include="Math\Matrix2x4d.cs" />
+    <Compile Include="Math\Matrix3.cs" />
+    <Compile Include="Math\Matrix3d.cs" />
+    <Compile Include="Math\Matrix3x2.cs" />
+    <Compile Include="Math\Matrix3x2d.cs" />
+    <Compile Include="Math\Matrix3x4.cs" />
+    <Compile Include="Math\Matrix3x4d.cs" />
+    <Compile Include="Math\Matrix4.cs" />
+    <Compile Include="Math\Matrix4d.cs" />
+    <Compile Include="Math\Matrix4x2.cs" />
+    <Compile Include="Math\Matrix4x2d.cs" />
+    <Compile Include="Math\Matrix4x3.cs" />
+    <Compile Include="Math\Matrix4x3d.cs" />
+    <Compile Include="Math\Point.cs" />
+    <Compile Include="Math\Quaternion.cs" />
+    <Compile Include="Math\Quaterniond.cs" />
+    <Compile Include="Math\Rectangle.cs" />
+    <Compile Include="Math\Size.cs" />
+    <Compile Include="Math\Vector2.cs" />
+    <Compile Include="Math\Vector2d.cs" />
+    <Compile Include="Math\Vector2h.cs" />
+    <Compile Include="Math\Vector3.cs" />
+    <Compile Include="Math\Vector3d.cs" />
+    <Compile Include="Math\Vector3h.cs" />
+    <Compile Include="Math\Vector4.cs" />
+    <Compile Include="Math\Vector4d.cs" />
+    <Compile Include="Math\Vector4h.cs" />
+    <Compile Include="Minimal.cs" />
+    <Compile Include="NativeWindow.cs" />
+    <Compile Include="Platform\DesktopGraphicsContext.cs" />
+    <Compile Include="DisplayDevice.cs" />
+    <Compile Include="Platform\DisplayDeviceBase.cs" />
+    <Compile Include="Platform\EmbeddedGraphicsContext.cs" />
+    <Compile Include="Platform\Factory.cs" />
+    <Compile Include="Platform\IDisplayDeviceDriver.cs" />
+    <Compile Include="Platform\INativeGLWindow.cs" />
+    <Compile Include="Platform\IPlatformFactory.cs" />
+    <Compile Include="Platform\IWindowInfo.cs" />
+    <Compile Include="Platform\MappedGamePadDriver.cs" />
+    <Compile Include="Platform\PlatformException.cs" />
+    <Compile Include="Platform\Utilities.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RewrittenAttribute.cs" />
+    <Compile Include="SlotAttribute.cs" />
+    <Compile Include="Toolkit.cs" />
+    <Compile Include="ToolkitOptions.cs" />
+    <Compile Include="WindowBorder.cs" />
+    <Compile Include="WindowState.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="..\..\OpenTK.snk">
+      <Link>OpenTK.snk</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

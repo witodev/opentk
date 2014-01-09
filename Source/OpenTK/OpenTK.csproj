@@ -128,11 +128,123 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="DisplayDevice.cs">
-      <SubType>Code</SubType>
+    <Compile Include="..\OpenTK.Core\Math\BezierCurve.cs">
+      <Link>Math\BezierCurve.cs</Link>
     </Compile>
-    <Compile Include="DisplayIndex.cs" />
-    <Compile Include="Graphics\GraphicsModeComparer.cs" />
+    <Compile Include="..\OpenTK.Core\Math\BezierCurveCubic.cs">
+      <Link>Math\BezierCurveCubic.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\BezierCurveQuadric.cs">
+      <Link>Math\BezierCurveQuadric.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Box2.cs">
+      <Link>Math\Box2.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Functions.cs">
+      <Link>Math\Functions.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Half.cs">
+      <Link>Math\Half.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\MathHelper.cs">
+      <Link>Math\MathHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix2.cs">
+      <Link>Math\Matrix2.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix2d.cs">
+      <Link>Math\Matrix2d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix2x3.cs">
+      <Link>Math\Matrix2x3.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix2x3d.cs">
+      <Link>Math\Matrix2x3d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix2x4.cs">
+      <Link>Math\Matrix2x4.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix2x4d.cs">
+      <Link>Math\Matrix2x4d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix3.cs">
+      <Link>Math\Matrix3.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix3d.cs">
+      <Link>Math\Matrix3d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix3x2.cs">
+      <Link>Math\Matrix3x2.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix3x2d.cs">
+      <Link>Math\Matrix3x2d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix3x4.cs">
+      <Link>Math\Matrix3x4.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix3x4d.cs">
+      <Link>Math\Matrix3x4d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix4.cs">
+      <Link>Math\Matrix4.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix4d.cs">
+      <Link>Math\Matrix4d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix4x2.cs">
+      <Link>Math\Matrix4x2.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix4x2d.cs">
+      <Link>Math\Matrix4x2d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix4x3.cs">
+      <Link>Math\Matrix4x3.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Matrix4x3d.cs">
+      <Link>Math\Matrix4x3d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Point.cs">
+      <Link>Math\Point.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Quaternion.cs">
+      <Link>Math\Quaternion.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Quaterniond.cs">
+      <Link>Math\Quaterniond.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Rectangle.cs">
+      <Link>Math\Rectangle.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Size.cs">
+      <Link>Math\Size.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Vector2.cs">
+      <Link>Math\Vector2.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Vector2d.cs">
+      <Link>Math\Vector2d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Vector2h.cs">
+      <Link>Math\Vector2h.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Vector3.cs">
+      <Link>Math\Vector3.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Vector3d.cs">
+      <Link>Math\Vector3d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Vector3h.cs">
+      <Link>Math\Vector3h.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Vector4.cs">
+      <Link>Math\Vector4.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Vector4d.cs">
+      <Link>Math\Vector4d.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenTK.Core\Math\Vector4h.cs">
+      <Link>Math\Vector4h.cs</Link>
+    </Compile>
     <Compile Include="Input\GamePadThumbSticks.cs" />
     <Compile Include="Input\GamePadTriggers.cs" />
     <Compile Include="Input\GamePadType.cs" />
@@ -146,115 +258,7 @@
     <Compile Include="Input\JoystickButton.cs" />
     <Compile Include="Input\JoystickCapabilities.cs" />
     <Compile Include="Input\JoystickState.cs" />
-    <Compile Include="InteropHelper.cs" />
-    <Compile Include="Math\Matrix2.cs" />
-    <Compile Include="Math\Matrix2d.cs" />
-    <Compile Include="Math\Matrix2x3.cs" />
-    <Compile Include="Math\Matrix2x3d.cs" />
-    <Compile Include="Math\Matrix2x4.cs" />
-    <Compile Include="Math\Matrix2x4d.cs" />
-    <Compile Include="Math\Matrix3.cs" />
-    <Compile Include="Math\Matrix3x2.cs" />
-    <Compile Include="Math\Matrix3x2d.cs" />
-    <Compile Include="Math\Matrix3x4.cs" />
-    <Compile Include="Math\Matrix3x4d.cs" />
-    <Compile Include="Math\Matrix4x2.cs" />
-    <Compile Include="Math\Matrix4x2d.cs" />
-    <Compile Include="Math\Matrix4x3.cs" />
-    <Compile Include="Math\Matrix4x3d.cs" />
-    <Compile Include="Platform\DisplayDeviceBase.cs" />
-    <Compile Include="Platform\MappedGamePadDriver.cs" />
-    <Compile Include="Platform\Windows\WinInputBase.cs" />
-    <Compile Include="Platform\Windows\XInputJoystick.cs" />
-    <Compile Include="ToolkitOptions.cs" />
-    <Compile Include="WindowBorder.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ContextHandle.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="WindowState.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="IGameWindow.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GameWindowFlags.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="KeyPressEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AutoGeneratedAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="NativeWindow.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DisplayResolution.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="BindingsBase.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Toolkit.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FrameEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="BlittableValueType.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GameWindow.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Minimal.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Configuration.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Exceptions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="INativeWindow.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\IDisplayDeviceDriver.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\IWindowInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\EmbeddedGraphicsContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\PlatformException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\IPlatformFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Factory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Utilities.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\INativeGLWindow.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\DesktopGraphicsContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Dummy\DummyWindowInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Dummy\DummyGLContext.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Platform\Egl\EglX11PlatformFactory.cs">
@@ -276,192 +280,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Platform\Egl\EglMacPlatformFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\EventInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\MacOSGraphicsMode.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\MacOSFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\MacOSException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\MacOSKeyMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\CarbonGLNative.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\Application.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\AglContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\QuartzDisplayDeviceDriver.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\CarbonInput.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\CarbonWindowInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\CarbonBindings\CarbonAPI.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\CarbonBindings\SpeechChannel.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\CarbonBindings\QuartzDisplayServicesAPI.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\CarbonBindings\MacOSKeys.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\CarbonBindings\Agl.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\MacOS\CarbonBindings\CoreFoundation.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WinRawKeyboard.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WinFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WinRawInput.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WinRawMouse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WinDisplayDevice.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\API.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WinKeyMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WinGLNative.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WinWindowInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WinGLContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WinMMJoystick.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WglHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\WinGraphicsMode.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\Bindings\Wgl.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\Bindings\WglDelegates.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\Windows\Bindings\WglEnums.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\X11WindowInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\X11Joystick.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\Functions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\GlxHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\API.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\X11DisplayDevice.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\X11GraphicsMode.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\X11GLNative.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\X11KeyMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\X11GLContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\Structs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\X11Input.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\X11Factory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Platform\X11\Bindings\Glx.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\IGraphicsMode.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\GraphicsExceptions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\GraphicsErrorException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\Color4.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\GraphicsContextVersion.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\IGraphicsContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\GraphicsMode.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\GraphicsModeException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\GraphicsContextFlags.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\GraphicsContextMissingException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\GraphicsContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\GraphicsContextException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\GraphicsContextBase.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\GraphicsBindingsBase.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\ColorFormat.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Graphics\OpenGL\GLHelper.cs">
@@ -489,18 +307,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Graphics\ES10\Core.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\ES11\ErrorHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\ES11\Helper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\ES20\ErrorHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\ES20\Helper.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Input\Keyboard.cs">
@@ -552,78 +358,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Input\IInputDevice.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Quaternion.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Matrix3d.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Vector4.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\BezierCurve.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Vector3.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Functions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Matrix4d.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Vector2d.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Vector2h.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Vector3h.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Point.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Box2.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Matrix4.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Half.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Vector4d.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Rectangle.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Vector2.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\BezierCurveQuadric.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\MathHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Quaterniond.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Vector4h.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Size.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\Vector3d.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Math\BezierCurveCubic.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Compute\Memory.cs">
@@ -689,87 +423,15 @@
     <Compile Include="Compute\CL10\ImageFormat.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Audio\AudioDeviceException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\AudioContextException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\AudioValueException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\AudioException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\AudioDeviceEnumerator.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\AudioDeviceErrorChecker.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\AudioContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\AudioCapture.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\OpenAL\Alc\AlcEnums.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\OpenAL\Alc\Alc.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\OpenAL\AL\EffectsExtensionPresets.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\OpenAL\AL\EffectsExtensionEnums.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\OpenAL\AL\XRamExtension.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\OpenAL\AL\EffectsExtension.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\OpenAL\AL\AL.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Audio\OpenAL\AL\ALEnums.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <None Include="..\..\OpenTK.snk">
       <Link>OpenTK.snk</Link>
     </None>
-    <Compile Include="Platform\X11\X11Keyboard.cs" />
-    <Compile Include="Platform\X11\X11Mouse.cs" />
     <Compile Include="Input\ButtonState.cs" />
-    <Compile Include="Platform\X11\XI2Mouse.cs" />
     <EmbeddedResource Include="OpenTK.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Compile Include="Platform\MacOS\HIDInput.cs" />
-    <Compile Include="IntPtrEqualityComparer.cs" />
     <Compile Include="Input\GamePadAxes.cs" />
-    <Compile Include="Platform\SDL2\Sdl2DisplayDeviceDriver.cs" />
-    <Compile Include="Platform\SDL2\Sdl2Factory.cs" />
-    <Compile Include="Platform\SDL2\Sdl2GraphicsContext.cs" />
-    <Compile Include="Platform\SDL2\Sdl2GraphicsMode.cs" />
-    <Compile Include="Platform\SDL2\Sdl2InputDriver.cs" />
-    <Compile Include="Platform\SDL2\Sdl2KeyMap.cs" />
-    <Compile Include="Platform\SDL2\Sdl2Keyboard.cs" />
-    <Compile Include="Platform\SDL2\Sdl2Mouse.cs" />
-    <Compile Include="Platform\SDL2\Sdl2NativeWindow.cs" />
-    <Compile Include="Platform\SDL2\Sdl2WindowInfo.cs" />
-    <Compile Include="Platform\MacOS\Cgl.cs" />
-    <Compile Include="Platform\SDL2\Sdl2.cs" />
     <Compile Include="Platform\Egl\EglSdl2PlatformFactory.cs" />
-    <Compile Include="Platform\SDL2\Sdl2JoystickDriver.cs" />
-    <Compile Include="Graphics\ES30\ErrorHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\ES30\Helper.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Graphics\OpenGL4\Helper.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -778,16 +440,7 @@
     </Compile>
     <Compile Include="Graphics\OpenGL4\GL4.cs" />
     <Compile Include="Graphics\OpenGL4\GL4Enums.cs" />
-    <Compile Include="Graphics\ES30\ES30.cs" />
-    <Compile Include="Graphics\ES30\ES30Enums.cs" />
-    <Compile Include="Graphics\ES20\ES20.cs" />
-    <Compile Include="Graphics\ES20\ES20Enums.cs" />
-    <Compile Include="Graphics\ES11\ES11.cs" />
-    <Compile Include="Graphics\ES11\ES11Enums.cs" />
-    <Compile Include="SlotAttribute.cs" />
-    <Compile Include="RewrittenAttribute.cs" />
     <Compile Include="Graphics\OpenGL\GLObsolete.cs" />
-    <Compile Include="Platform\MacOS\NS.cs" />
     <Compile Include="Input\GamePadCapabilities.cs" />
     <Compile Include="Input\GamePadDPad.cs" />
     <Compile Include="Input\GamePadButtons.cs" />
@@ -806,7 +459,17 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Audio\" />
+    <Folder Include="Graphics\ES11\" />
+    <Folder Include="Graphics\ES20\" />
+    <Folder Include="Graphics\ES30\" />
+    <Folder Include="Platform\Dummy\" />
+    <Folder Include="Platform\MacOS\" />
+    <Folder Include="Platform\SDL2\" />
+    <Folder Include="Platform\Windows\" />
+    <Folder Include="Platform\X11\" />
+  </ItemGroup>
   <Target Name="AfterBuild">
     <Exec Command="$(OutputPath)..\..\Tools\Debug\Rewrite.exe $(OutputPath)OpenTK.dll ..\..\OpenTK.snk" Condition="$(OS) == 'Windows_NT' and $(Configuration) == 'Debug'" />
     <Exec Command="$(OutputPath)..\..\Tools\Release\Rewrite.exe $(OutputPath)OpenTK.dll ..\..\OpenTK.snk" Condition="$(OS) == 'Windows_NT' and $(Configuration) != 'Debug'" />
