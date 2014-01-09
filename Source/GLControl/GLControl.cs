@@ -31,12 +31,12 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Data;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
 using OpenTK.Platform;
 using OpenTK.Graphics;
-using OpenTK.Graphics.OpenGL;
 
 namespace OpenTK
 {
@@ -430,6 +430,9 @@ namespace OpenTK
 
         #region public Bitmap GrabScreenshot()
 
+        [DllImport("OPENGL32.DLL")]
+        public static extern void glReadPixels(int x, int y, int width, int height, int format, int type, IntPtr pixels);
+
         /// <summary>Grabs a screenshot of the frontbuffer contents.</summary>
         /// <returns>A System.Drawing.Bitmap, containing the contents of the frontbuffer.</returns>
         /// <exception cref="OpenTK.Graphics.GraphicsContextException">
@@ -444,8 +447,10 @@ namespace OpenTK
             System.Drawing.Imaging.BitmapData data =
                 bmp.LockBits(this.ClientRectangle, System.Drawing.Imaging.ImageLockMode.WriteOnly,
                              System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            GL.ReadPixels(0, 0, this.ClientSize.Width, this.ClientSize.Height, PixelFormat.Bgr, PixelType.UnsignedByte,
-                          data.Scan0);
+            glReadPixels(0, 0, this.ClientSize.Width, this.ClientSize.Height,
+                0x80E0, // PixelFormat.Bgr
+                0x1401, // PixelType.UnsignedByte,
+                data.Scan0);
             bmp.UnlockBits(data);
             bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
             return bmp;
