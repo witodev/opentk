@@ -130,11 +130,6 @@ namespace OpenTK.Platform
             return default_implementation.CreateGetCurrentGraphicsContext();
         }
 
-        public IGraphicsMode CreateGraphicsMode()
-        {
-            return default_implementation.CreateGraphicsMode();
-        }
-        
         public IKeyboardDriver2 CreateKeyboardDriver()
         {
             return default_implementation.CreateKeyboardDriver();
@@ -192,11 +187,6 @@ namespace OpenTK.Platform
             }
 
             public override GraphicsContext.GetCurrentContextDelegate CreateGetCurrentGraphicsContext()
-            {
-                throw new PlatformNotSupportedException(error_string);
-            }
-
-            public override IGraphicsMode CreateGraphicsMode()
             {
                 throw new PlatformNotSupportedException(error_string);
             }
