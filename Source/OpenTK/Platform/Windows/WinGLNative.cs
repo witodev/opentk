@@ -84,7 +84,7 @@ namespace OpenTK.Platform.Windows
         const ClassStyle DefaultClassStyle = ClassStyle.OwnDC;
 
         // Used for IInputDriver implementation
-        WinMMJoystick joystick_driver = new WinMMJoystick();
+        LegacyJoystickDriver joystick_driver = new LegacyJoystickDriver();
         KeyboardDevice keyboard = new KeyboardDevice();
         MouseDevice mouse = new MouseDevice();
         IList<KeyboardDevice> keyboards = new List<KeyboardDevice>(1);
