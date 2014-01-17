@@ -85,6 +85,7 @@ namespace OpenTK.Input
         public bool IsConnected
         {
             get { return is_connected; }
+            private set { is_connected = value; }
         }
 
         /// <summary>
@@ -122,6 +123,15 @@ namespace OpenTK.Input
             return
                 obj is JoystickCapabilities &&
                 Equals((JoystickCapabilities)obj);
+        }
+
+        #endregion
+
+        #region Internal Members
+
+        internal void SetIsConnected(bool value)
+        {
+            IsConnected = value;
         }
 
         #endregion
