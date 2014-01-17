@@ -153,7 +153,7 @@ namespace OpenTK.Platform.Windows
             }
         }
 
-        public bool ProcessKeyboardEvent(RawInput rin)
+        public bool ProcessKeyboardEvent(ref RawInput rin)
         {
             bool processed = false;
 
