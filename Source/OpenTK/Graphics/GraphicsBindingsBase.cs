@@ -83,7 +83,16 @@ namespace OpenTK.Graphics
             IGraphicsContextInternal context_internal = context as IGraphicsContextInternal;
             for (int i = 0; i < EntryPointsInstance.Length; i++)
             {
-                EntryPointsInstance[i] = context_internal.GetAddress(EntryPointNamesInstance[i]);
+                string name = EntryPointNamesInstance[i];
+                IntPtr address = context_internal.GetAddress(name);
+                if (address != IntPtr.Zero)
+                {
+                    EntryPointsInstance[i] = address;
+                }
+                else
+                {
+                    EntryPointsInstance[i] = base.GetAddress(name);
+                }
             }
         }
     }

@@ -58,6 +58,10 @@ namespace OpenTK
 
         bool rebuildExtensionList = true;
 
+        delegate void NotFoundDelegate();
+        static readonly NotFoundDelegate NotFoundInstance = NotFound;
+        static readonly IntPtr NotFoundPtr = Marshal.GetFunctionPointerForDelegate(NotFoundInstance);
+
         #endregion
 
         #region Constructors
@@ -109,7 +113,10 @@ namespace OpenTK
         /// Typical values include 1 and 2 - inheritors are advised to check for and ignore these
         /// values.
         /// </remarks>
-        protected abstract IntPtr GetAddress(string funcname);
+        protected virtual IntPtr GetAddress(string funcname)
+        {
+            return NotFoundPtr;
+        }
 
         /// <summary>
         /// Gets an object that can be used to synchronize access to the bindings implementation.
@@ -336,6 +343,15 @@ namespace OpenTK
                 GetExtensionDelegate(name, signature) ??
                 (CoreFunctionMap.TryGetValue((name.Substring(2)), out m) ?
                 Delegate.CreateDelegate(signature, m) : null);
+        }
+
+        #endregion
+
+        #region NotFound
+
+        static void NotFound()
+        {
+            throw new EntryPointNotFoundException();
         }
 
         #endregion
