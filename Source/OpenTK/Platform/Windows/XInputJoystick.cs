@@ -98,6 +98,9 @@ namespace OpenTK.Platform.Windows
         #endregion
 
         #region Private Members
+
+#pragma warning disable 0649 // field is never assigned
+
         GamePadAxes TranslateAxes(ref XInputGamePad pad)
         {
             GamePadAxes axes = 0;
@@ -281,6 +284,8 @@ namespace OpenTK.Platform.Windows
             public XInputBatteryType Type;
             public XInputBatteryLevel Level;
         }
+
+#pragma warning restore 0649
 
         class XInput : IDisposable
         {
