@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>OpenTK.SDL2.Mac</id>
+        <version>$version$</version>
+        <authors>The Open Toolkit Team</authors>
+        <owners>The Open Toolkit Team</owners>
+        <licenseUrl>http://www.opentk.com/project/license</licenseUrl>
+        <projectUrl>http://www.opentk.com</projectUrl>
+        <iconUrl>file:///./logo.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <summary>
+          OpenTK.SDL2.Windows installs the SDL2 backend of OpenTK for Mac OS X.
+          Install this package in order to use OpenTK on Retina displays.
+        </summary>
+        <description>
+          SDL2 is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.
+
+          OpenTK can optionally use SDL2 in order to improve compatibility with various platforms. If SDL2 is not available, then OpenTK will use the underlying platform APIs directly.
+
+          The Open Toolkit library (OpenTK) is an advanced, low-level C# wrapper for OpenGL, OpenGL ES and OpenAL.
+          It is suitable for games, scientific visualizations and projects that require 3d graphics, audio or compute functionality.
+
+          Features
+          - Create cutting-edge graphics with OpenGL 4.4 and OpenGL ES 3.0
+          - Integrate 3d graphics into your Windows.Forms, WPF or GTK# applications
+          - Write once run everywhere: Windows, Mac OS X, Linux, Android and iOS
+          - Use the .Net/Mono language of your choice: C#, F#, VB.Net, Boo, IronPython, IronRuby
+          - Develop faster with inline documentation and strongly-typed enumerations for all OpenGL and OpenAL functions
+
+          This is the official nuget package from http://www.opentk.com
+          The source code can be found at https://github.com/opentk/opentk
+        </description>
+        <releaseNotes>
+            http://www.opentk.com/news
+        </releaseNotes>
+        <copyright>Copyright 2006-2014 Stefanos Apostolopoulos</copyright>
+        <tags>OpenTK OpenGL OpenGLES OpenAL C# F# VB .Net Mono</tags>
+        <dependencies>
+            <dependency id="OpenTK" version="1.1.0.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="../../Dependencies/x86/libSDL2.dylib" target="build/lib/x86" />
+        <file src="../../Dependencies/x64/libSDL2.dylib" target="build/lib/x64" />
+        <file src="../../Dependencies/License/SDL2.COPYING.txt" target="build/lib" />
+        <file src="OpenTK.SDL2.Mac.targets" target="build" />
+    </files>
+</package>

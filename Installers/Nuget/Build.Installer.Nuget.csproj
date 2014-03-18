@@ -1,21 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup Condition="'$(Configuration)' == 'Documentation'">
-    <OutputPath>.\obj\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <OutputPath>.\obj\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <OutputPath>.\obj\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Nsis'">
-    <OutputPath>.\obj\</OutputPath>
-  </PropertyGroup>
   <PropertyGroup>
     <ProjectGuid>{ADC34399-7613-44D2-90B2-19250F12FE7B}</ProjectGuid>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <OutputPath>.\obj\</OutputPath>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
@@ -26,26 +13,31 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Documentation|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>False</Optimize>
-    <OutputPath>obj\</OutputPath>
+    <OutputPath>..\..\Binaries\Installers\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>False</Optimize>
-    <OutputPath>obj\</OutputPath>
+    <OutputPath>..\..\Binaries\Installers\Debug</OutputPath>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>False</Optimize>
-    <OutputPath>obj\</OutputPath>
+    <OutputPath>..\..\Binaries\Installers\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Nsis|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>False</Optimize>
-    <OutputPath>obj\</OutputPath>
+    <OutputPath>..\..\Binaries\Installers\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Nuget Condition="$(OS) == 'Windows_NT'">nuget.exe</Nuget>
+    <Nuget Condition="$(OS) != 'Windows_NT'">mono nuget.exe</Nuget>
+    <NugetArgs>-Version @(Version) -Output $(OutputPath)</NugetArgs>
   </PropertyGroup>
   <Target Name="Build">
     <!-- Copy built files to the tree format expected by nuget -->
@@ -58,18 +50,15 @@
       <Output TaskParameter="Lines" ItemName="Version" />
     </ReadLinesFromFile>
     <!-- Execute nuget script -->
-    <Exec Command="nuget.exe	 pack OpenTK.nuspec -Version @(Version)" Condition="$(OS) == 'Windows_NT'" />
-    <Exec Command="nuget.exe   pack OpenTK.GLControl.nuspec -Version @(Version)" Condition="$(OS) == 'Windows_NT'" />
-    <Exec Command="mono nuget.exe pack OpenTK.nuspec  -Version @(Version)" Condition="$(OS) != 'Windows_NT'" />
-    <Exec Command="mono nuget.exe pack OpenTK.GLControl.nuspec  -Version @(Version)" Condition="$(OS) != 'Windows_NT'" />
-    <!-- Copy the nuget archive to the root directory and add a date stamp -->
-    <CreateItem Include="OpenTK*.nupkg">
-      <Output TaskParameter="Include" ItemName="NugetPackage" />
-    </CreateItem>
-    <Copy SourceFiles="@(NugetPackage)" DestinationFolder="../../" />
+    <Exec Command="$(Nuget) pack OpenTK.nuspec $(NugetArgs)" />
+    <Exec Command="$(Nuget) pack OpenTK.Documentation.nuspec $(NugetArgs)" />
+    <Exec Command="$(Nuget) pack OpenTK.GLControl.nuspec $(NugetArgs)" />
+    <Exec Command="$(Nuget) pack OpenTK.SDK.nuspec $(NugetArgs)" />
+    <Exec Command="$(Nuget) pack OpenTK.SDL2.Mac.nuspec $(NugetArgs)" />
+    <Exec Command="$(Nuget) pack OpenTK.SDL2.Windows.nuspec $(NugetArgs)" />
   </Target>
   <Target Name="Clean">
-    <CreateItem Include="OpenTK.*.nupkg;lib/**">
+    <CreateItem Include="$(OutputPath)**;OpenTK.*.nupkg;lib/**">
       <Output TaskParameter="Include" ItemName="FilesToDelete" />
     </CreateItem>
     <Delete Files="@(FilesToDelete)" />
@@ -79,6 +68,12 @@
     <CallTarget Targets="Build" />
   </Target>
   <ItemGroup>
+    <None Include="OpenTK.SDL2.Windows.targets" />
+    <None Include="OpenTK.Documentation.nuspec" />
+    <None Include="OpenTK.SDL2.Mac.targets" />
+    <None Include="OpenTK.SDL2.Mac.nuspec" />
+    <None Include="OpenTK.SDK.nuspec" />
+    <None Include="OpenTK.SDL2.Windows.nuspec" />
     <None Include="OpenTK.nuspec" />
     <None Include="OpenTK.GLControl.nuspec" />
   </ItemGroup>
