@@ -754,11 +754,15 @@ namespace OpenTK.Platform.MacOS.Carbon
             return (MouseButton)button;
         }
         
+#pragma warning disable 0649
+
         internal struct ScrollDelta {
-        	internal float deltaX;
+            internal float deltaX;
             internal float deltaY;
         }
-        
+
+#pragma warning restore 0649
+
         static internal ScrollDelta GetEventWheelScroll(IntPtr inEvent) 
         {
         	ScrollDelta scrolldelta = new ScrollDelta();
