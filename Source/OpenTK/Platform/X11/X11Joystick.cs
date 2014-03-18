@@ -359,6 +359,8 @@ namespace OpenTK.Platform.X11
 
         #region UnsafeNativeMethods
 
+#pragma warning disable 0649
+
         struct EvdevInputId
         {
             public ushort BusType;
@@ -366,6 +368,8 @@ namespace OpenTK.Platform.X11
             public ushort Product;
             public ushort Version;
         }
+
+#pragma warning restore 0649
 
         enum EvdevIoctlCode : uint
         {
