@@ -37,23 +37,19 @@ namespace OpenTK.Platform.X11
     // This should be easy: just read the device id and route the data to the correct device.
     sealed class XI2Mouse : IMouseDriver2
     {
-        List<MouseState> mice = new List<MouseState>();
+        class MouseDescriptor
+        {
+            public MouseState State;
+            public XIDeviceInfo Device;
+        }
+        
+        List<MouseDescriptor> mice = new List<MouseDescriptor>();
         Dictionary<int, int> rawids = new Dictionary<int, int>(); // maps raw ids to mouse ids
         internal readonly X11WindowInfo window;
         static int XIOpCode;
 
         static readonly Functions.EventPredicate PredicateImpl = IsEventValid;
         readonly IntPtr Predicate = Marshal.GetFunctionPointerForDelegate(PredicateImpl);
-
-        // Store information on a mouse warp event, so it can be ignored.
-        struct MouseWarp : IEquatable<MouseWarp>
-        {
-            public MouseWarp(double x, double y) { X = x; Y = y; }
-            double X, Y;
-            public bool Equals(MouseWarp warp) { return X == warp.X && Y == warp.Y; }
-        }
-        MouseWarp? mouse_warp_event;
-        int mouse_warp_event_count;
 
         public XI2Mouse()
         {
@@ -71,8 +67,11 @@ namespace OpenTK.Platform.X11
             if (!IsSupported(window.Display))
                 throw new NotSupportedException("XInput2 not supported.");
 
-            using (XIEventMask mask = new XIEventMask(1, XIEventMasks.RawButtonPressMask |
-                    XIEventMasks.RawButtonReleaseMask | XIEventMasks.RawMotionMask))
+            using (XIEventMask mask = new XIEventMask(
+                0, // AllDevices
+                XIEventMasks.RawButtonPressMask |
+                XIEventMasks.RawButtonReleaseMask |
+                XIEventMasks.RawMotionMask))
             {
                 Functions.XISelectEvents(window.Display, window.Handle, mask);
                 Functions.XISelectEvents(window.Display, window.RootWindow, mask);
@@ -105,9 +104,9 @@ namespace OpenTK.Platform.X11
         {
             ProcessEvents();
             MouseState master = new MouseState();
-            foreach (MouseState ms in mice)
+            foreach (MouseDescriptor ms in mice)
             {
-                master.MergeBits(ms);
+                master.MergeBits(ms.State);
             }
             return master;
         }
@@ -116,7 +115,7 @@ namespace OpenTK.Platform.X11
         {
             ProcessEvents();
             if (mice.Count > index)
-                return mice[index];
+                return mice[index].State;
             else
                 return new MouseState();
         }
@@ -125,33 +124,20 @@ namespace OpenTK.Platform.X11
         {
             using (new XLock(window.Display))
             {
-                Functions.XWarpPointer(window.Display,
-                    IntPtr.Zero, window.RootWindow, 0, 0, 0, 0, (int)x, (int)y);
-
-                // Mark the expected warp-event so it can be ignored.
-                if (mouse_warp_event == null)
-                    mouse_warp_event_count = 0;
-                mouse_warp_event_count++;
-                mouse_warp_event = new MouseWarp((int)x, (int)y);
+                Functions.XIWarpPointer(
+                    window.Display,
+                    0, // AllDevices
+                    IntPtr.Zero,
+                    window.RootWindow,
+                    0, 0, 0, 0,
+                    (int)Math.Round(x), (int)Math.Round(y));
+                Functions.XSync(window.Display, false);
             }
 
             ProcessEvents();
         }
 
         #endregion
-
-        bool CheckMouseWarp(double x, double y)
-        {
-            // Check if a mouse warp with the specified destination exists.
-            bool is_warp =
-                mouse_warp_event.HasValue &&
-                mouse_warp_event.Value.Equals(new MouseWarp((int)x, (int)y));
-
-            if (is_warp && --mouse_warp_event_count <= 0)
-                    mouse_warp_event = null;
-
-            return is_warp;
-        }
 
         void ProcessEvents()
         {
@@ -171,31 +157,55 @@ namespace OpenTK.Platform.X11
                         XIRawEvent raw = (XIRawEvent)
                             Marshal.PtrToStructure(cookie.data, typeof(XIRawEvent));
 
+                        MouseDescriptor mouse = null;
                         if (!rawids.ContainsKey(raw.deviceid))
                         {
-                            mice.Add(new MouseState());
-                            rawids.Add(raw.deviceid, mice.Count - 1);
+                            XIDeviceInfo info;
+                            if (Functions.XIQueryDevice(
+                                window.Display,
+                                raw.deviceid,
+                                out info))
+                            {
+                                mouse = new MouseDescriptor();
+                                mouse.Device = info;
+
+                                mice.Add(mouse);
+                                rawids.Add(raw.deviceid, mice.Count - 1);
+                            }
                         }
-                        MouseState state = mice[rawids[raw.deviceid]];
+                        mouse = mice[rawids[raw.deviceid]];
+                        MouseState state = mouse.State;
 
                         switch (raw.evtype)
                         {
                             case XIEventType.RawMotion:
                                 double x = 0, y = 0;
-                                if (IsBitSet(raw.valuators.mask, 0))
+                                for (int i = 0; i < mouse.Device.num_classes; i++)
                                 {
-                                    x = BitConverter.Int64BitsToDouble(Marshal.ReadInt64(raw.raw_values, 0));
-                                }
-                                if (IsBitSet(raw.valuators.mask, 1))
-                                {
-                                    y = BitConverter.Int64BitsToDouble(Marshal.ReadInt64(raw.raw_values, 8));
+                                    unsafe
+                                    {
+                                        XIValuatorClassInfo *pinfo =
+                                            (XIValuatorClassInfo*)mouse.Device.classes[i];
+
+                                        if (pinfo->type != XIClassType.Valuator)
+                                            continue;
+
+                                        if (IsBitSet(raw.valuators.mask, pinfo->number))
+                                        {
+                                            if (pinfo->number == 0 && pinfo->mode == XIValuatorMode.Relative)
+                                            {
+                                                x = BitConverter.Int64BitsToDouble(Marshal.ReadInt64(raw.valuators.values, 0));
+                                            }
+                                            else if (pinfo->number == 0 && pinfo->mode == XIValuatorMode.Relative)
+                                            {
+                                                y = BitConverter.Int64BitsToDouble(Marshal.ReadInt64(raw.valuators.values, 8));
+                                            }
+                                        }
+                                    }
                                 }
 
-                                if (!CheckMouseWarp(x, y))
-                                {
-                                    state.X += (int)x;
-                                    state.Y += (int)y;
-                                }
+                                state.X += (int)Math.Round(x);
+                                state.Y += (int)Math.Round(y);
                                 break;
 
                             case XIEventType.RawButtonPress:
@@ -236,7 +246,7 @@ namespace OpenTK.Platform.X11
                                 }
                                 break;
                         }
-                        mice[rawids[raw.deviceid]] = state;
+                        mice[rawids[raw.deviceid]].State = state;
                     }
                     Functions.XFreeEventData(window.Display, ref cookie);
                 }

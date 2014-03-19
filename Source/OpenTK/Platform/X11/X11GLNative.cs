@@ -114,7 +114,6 @@ namespace OpenTK.Platform.X11
 
         bool _decorations_hidden = false;
         bool cursor_visible = true;
-        int mouse_rel_x, mouse_rel_y;
 
          // Keyboard input
         readonly byte[] ascii = new byte[16];
@@ -124,8 +123,6 @@ namespace OpenTK.Platform.X11
         readonly KeyboardKeyEventArgs KeyUpEventArgs = new KeyboardKeyEventArgs();
 
         readonly IntPtr EmptyCursor;
-
-        public static bool MouseWarpActive = false;
 
         #endregion
 
@@ -892,47 +889,9 @@ namespace OpenTK.Platform.X11
 
                     case XEventName.MotionNotify:
                     {
-                        // Try to detect and ignore events from XWarpPointer, below.
-                        // This heuristic will fail if the user actually moves the pointer
-                        // to the dead center of the window. Fortunately, this situation
-                        // is very very uncommon. Todo: Can this be remedied?
                         int x = e.MotionEvent.x;
-                        int y =e.MotionEvent.y;
-                        // TODO: Have offset as a stored field, only update it when the window moves
-                        // The middle point cannot be the average of the Bounds.left/right/top/bottom,
-                        // because these fields take into account window decoration (borders, etc),
-                        // which we do not want to account for.
-                        Point offset = this.PointToClient(Point.Empty);
-                        int middle_x = Width/2-offset.X;
-                        int middle_y = Height/2-offset.Y;
-
-                        Point screen_xy = PointToScreen(new Point(x, y));
-                        if (!CursorVisible && MouseWarpActive &&
-                            screen_xy.X == middle_x && screen_xy.Y == middle_y)
-                        {
-                            MouseWarpActive = false;
-                            mouse_rel_x = x;
-                            mouse_rel_y = y;
-                        }
-                        else if (!CursorVisible)
-                        {
-                            SetMouseClamped(mouse,
-                                mouse.X + x - mouse_rel_x,
-                                mouse.Y + y - mouse_rel_y,
-                                0, 0, Width, Height);
-                            mouse_rel_x = x;
-                            mouse_rel_y = y;
-
-                            // Warp cursor to center of window.
-                            MouseWarpActive = true;
-                            Mouse.SetPosition(middle_x, middle_y);
-                        }
-                        else
-                        {
-                            SetMouseClamped(mouse, x, y, 0, 0, Width, Height);
-                            mouse_rel_x = x;
-                            mouse_rel_y = y;
-                        }
+                        int y = e.MotionEvent.y;
+                        SetMouseClamped(mouse, x, y, 0, 0, Width, Height);
                         break;
                     }
 
@@ -1459,7 +1418,9 @@ namespace OpenTK.Platform.X11
                 {
                     using (new XLock(window.Display))
                     {
+                        Functions.XUngrabPointer(window.Display, IntPtr.Zero);
                         Functions.XUndefineCursor(window.Display, window.Handle);
+                        Functions.XSync(window.Display, false);
                         cursor_visible = true;
                     }
                 }
@@ -1467,8 +1428,29 @@ namespace OpenTK.Platform.X11
                 {
                     using (new XLock(window.Display))
                     {
-                        Functions.XDefineCursor(window.Display, window.Handle, EmptyCursor);
-                        cursor_visible = false;
+                        for (int retry = 0; retry < 10; retry++)
+                        {
+                            int result =
+                                Functions.XGrabPointer(
+                                    window.Display,
+                                    window.Handle,
+                                    true,
+                                    0,
+                                    GrabMode.GrabModeAsync,
+                                    GrabMode.GrabModeAsync,
+                                    window.Handle,
+                                    IntPtr.Zero,
+                                    IntPtr.Zero);
+                            
+                            if (result == 0)
+                            {
+                                // grab was successful
+                                Functions.XDefineCursor(window.Display, window.Handle, EmptyCursor);
+                                Functions.XSync(window.Display, false);
+                                cursor_visible = false;
+                                break;
+                            }
+                        }
                     }
                 }
             }

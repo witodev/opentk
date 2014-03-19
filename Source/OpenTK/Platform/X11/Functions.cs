@@ -540,6 +540,53 @@ namespace OpenTK.Platform.X11
             int deviceid, Window src_w, Window dest_w,
             double src_x, double src_y, int src_width, int src_height,
             double dest_x, double dest_y);
+  
+        [DllImport("libXi")]
+        public static extern IntPtr XIQueryDevice(Display display, int deviceid, out int ndevices_return);
+
+        [DllImport("libXi")]
+        public static extern void XIFreeDeviceInfo(IntPtr info);
+
+        public static XIDeviceInfo[] XIQueryDevice(Display display, int deviceid)
+        {
+            unsafe
+            {
+                int count;
+                XIDeviceInfo* pinfo = (XIDeviceInfo*)XIQueryDevice(display, deviceid, out count);
+
+                XIDeviceInfo[] info = new XIDeviceInfo[count];
+                for (int i = 0; i < count; i++)
+                {
+                    info[i] = *(pinfo + i);
+                }
+
+                XIFreeDeviceInfo((IntPtr)pinfo);
+
+                return info;
+            }
+        }
+        
+        public static bool XIQueryDevice(Display display, int deviceid, out XIDeviceInfo info)
+        {
+            unsafe
+            {
+                int count;
+                XIDeviceInfo* pinfo = (XIDeviceInfo*)XIQueryDevice(display, deviceid, out count);
+
+                if (count > 0)
+                {
+                    info = *pinfo;
+                }
+                else
+                {
+                    info = new XIDeviceInfo();
+                }
+
+                XIFreeDeviceInfo((IntPtr)pinfo);
+
+                return count > 0;
+            }
+        }
 
         static readonly IntPtr CopyFromParent = IntPtr.Zero;
 

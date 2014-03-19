@@ -1661,6 +1661,19 @@ namespace OpenTK.Platform.X11
         ZPixmap
     }
 
+    enum XIClassType
+    {
+        Key = 0,
+        Button,
+        Valuator
+    }
+    
+    enum XIValuatorMode
+    {
+        Relative = 0,
+        Absolute
+    }
+
     // XInput2 structures
 
     struct XIDeviceInfo
@@ -1671,13 +1684,26 @@ namespace OpenTK.Platform.X11
         public int attachment;
         public Bool enabled;
         public int num_classes;
-        public IntPtr classes; // XIAnyClassInfo **
+        unsafe public XIAnyClassInfo** classes;
     }
 
     struct XIAnyClassInfo
     {
-        public int type;
+        public XIClassType type;
         public int sourceid;
+    }
+
+    struct XIValuatorClassInfo
+    {
+        public XIClassType type;
+        public int sourceid;
+        public int number;
+        public Atom label;
+        public double min;
+        public double max;
+        public double @value;
+        public int resolution;
+        public XIValuatorMode mode;
     }
 
     struct XIDeviceEvent
