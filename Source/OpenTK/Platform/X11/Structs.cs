@@ -1009,7 +1009,10 @@ namespace OpenTK.Platform.X11
         XA_WM_CLASS = 67,
         XA_WM_TRANSIENT_FOR = 68,
 
-        XA_LAST_PREDEFINED = 68
+        XA_LAST_PREDEFINED = 68,
+
+        RelativeX, // "Rel X" label for XIValuatorClassInfo
+        RelativeY, // "Rel Y" label for XIValuatorClassInfo
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -1661,14 +1664,14 @@ namespace OpenTK.Platform.X11
         ZPixmap
     }
 
-    enum XIClassType
+    enum XIClassType : int
     {
         Key = 0,
         Button,
         Valuator
     }
     
-    enum XIValuatorMode
+    enum XIValuatorMode : int
     {
         Relative = 0,
         Absolute
@@ -1676,15 +1679,17 @@ namespace OpenTK.Platform.X11
 
     // XInput2 structures
 
+    //[StructLayout(LayoutKind.Sequential, Pack = 1)]
     struct XIDeviceInfo
     {
         public int deviceid;
         public IntPtr name; // byte*
         public int use;
         public int attachment;
+        [MarshalAs(UnmanagedType.I1)]
         public Bool enabled;
         public int num_classes;
-        unsafe public XIAnyClassInfo** classes;
+        public IntPtr classes; // XAnyClassInfo**
     }
 
     struct XIAnyClassInfo
@@ -1698,7 +1703,7 @@ namespace OpenTK.Platform.X11
         public XIClassType type;
         public int sourceid;
         public int number;
-        public Atom label;
+        public IntPtr label; // Atom
         public double min;
         public double max;
         public double @value;
@@ -1732,10 +1737,12 @@ namespace OpenTK.Platform.X11
         public XIGroupState        @group;
     }
 
+    //[StructLayout(LayoutKind.Sequential, Pack = 1)]
     struct XIRawEvent
     {
         public int           type;         /* GenericEvent */
         public IntPtr serial;       /* # of last request processed by server */
+        [MarshalAs(UnmanagedType.I1)]
         public Bool          send_event;   /* true if this came from a SendEvent request */
         public IntPtr display;     /* Display the event was read from */
         public int           extension;    /* XI extension offset */

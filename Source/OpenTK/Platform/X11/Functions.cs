@@ -560,7 +560,7 @@ namespace OpenTK.Platform.X11
                     info[i] = *(pinfo + i);
                 }
 
-                XIFreeDeviceInfo((IntPtr)pinfo);
+                //XIFreeDeviceInfo((IntPtr)pinfo);
 
                 return info;
             }
@@ -582,7 +582,7 @@ namespace OpenTK.Platform.X11
                     info = new XIDeviceInfo();
                 }
 
-                XIFreeDeviceInfo((IntPtr)pinfo);
+                //XIFreeDeviceInfo((IntPtr)pinfo);
 
                 return count > 0;
             }

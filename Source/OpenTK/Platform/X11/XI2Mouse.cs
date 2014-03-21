@@ -48,6 +48,9 @@ namespace OpenTK.Platform.X11
         internal readonly X11WindowInfo window;
         static int XIOpCode;
 
+        static readonly Type XIRawEventType = typeof(XIRawEvent);
+        static readonly Type XIValuatorClassInfoType = typeof(XIValuatorClassInfo);
+
         static readonly Functions.EventPredicate PredicateImpl = IsEventValid;
         readonly IntPtr Predicate = Marshal.GetFunctionPointerForDelegate(PredicateImpl);
 
@@ -68,7 +71,7 @@ namespace OpenTK.Platform.X11
                 throw new NotSupportedException("XInput2 not supported.");
 
             using (XIEventMask mask = new XIEventMask(
-                0, // AllDevices
+                1, // AllMasterDevices
                 XIEventMasks.RawButtonPressMask |
                 XIEventMasks.RawButtonReleaseMask |
                 XIEventMasks.RawMotionMask))
@@ -126,7 +129,7 @@ namespace OpenTK.Platform.X11
             {
                 Functions.XIWarpPointer(
                     window.Display,
-                    0, // AllDevices
+                    1, // AllMasterDevices
                     IntPtr.Zero,
                     window.RootWindow,
                     0, 0, 0, 0,
@@ -155,57 +158,15 @@ namespace OpenTK.Platform.X11
                     if (Functions.XGetEventData(window.Display, ref cookie) != 0)
                     {
                         XIRawEvent raw = (XIRawEvent)
-                            Marshal.PtrToStructure(cookie.data, typeof(XIRawEvent));
+                            Marshal.PtrToStructure(cookie.data, XIRawEventType);
 
-                        MouseDescriptor mouse = null;
-                        if (!rawids.ContainsKey(raw.deviceid))
-                        {
-                            XIDeviceInfo info;
-                            if (Functions.XIQueryDevice(
-                                window.Display,
-                                raw.deviceid,
-                                out info))
-                            {
-                                mouse = new MouseDescriptor();
-                                mouse.Device = info;
-
-                                mice.Add(mouse);
-                                rawids.Add(raw.deviceid, mice.Count - 1);
-                            }
-                        }
-                        mouse = mice[rawids[raw.deviceid]];
+                        MouseDescriptor mouse = GetMouseDescriptor(raw.deviceid);
                         MouseState state = mouse.State;
 
                         switch (raw.evtype)
                         {
                             case XIEventType.RawMotion:
-                                double x = 0, y = 0;
-                                for (int i = 0; i < mouse.Device.num_classes; i++)
-                                {
-                                    unsafe
-                                    {
-                                        XIValuatorClassInfo *pinfo =
-                                            (XIValuatorClassInfo*)mouse.Device.classes[i];
-
-                                        if (pinfo->type != XIClassType.Valuator)
-                                            continue;
-
-                                        if (IsBitSet(raw.valuators.mask, pinfo->number))
-                                        {
-                                            if (pinfo->number == 0 && pinfo->mode == XIValuatorMode.Relative)
-                                            {
-                                                x = BitConverter.Int64BitsToDouble(Marshal.ReadInt64(raw.valuators.values, 0));
-                                            }
-                                            else if (pinfo->number == 0 && pinfo->mode == XIValuatorMode.Relative)
-                                            {
-                                                y = BitConverter.Int64BitsToDouble(Marshal.ReadInt64(raw.valuators.values, 8));
-                                            }
-                                        }
-                                    }
-                                }
-
-                                state.X += (int)Math.Round(x);
-                                state.Y += (int)Math.Round(y);
+                                state = ProcessRawMotion(mouse, ref raw);
                                 break;
 
                             case XIEventType.RawButtonPress:
@@ -253,6 +214,78 @@ namespace OpenTK.Platform.X11
              }
         }
 
+        MouseDescriptor GetMouseDescriptor(int deviceid)
+        {
+            if (!rawids.ContainsKey(deviceid))
+            {
+                XIDeviceInfo info;
+                if (Functions.XIQueryDevice(
+                    window.Display,
+                    deviceid,
+                    out info))
+                {
+                    MouseDescriptor mouse = new MouseDescriptor();
+                    mouse.State.SetIsConnected(info.enabled);
+                    mouse.Device = info;
+
+                    mice.Add(mouse);
+                    rawids.Add(deviceid, mice.Count - 1);
+                }
+            }
+            return mice[rawids[deviceid]];
+        }
+
+        MouseState ProcessRawMotion(MouseDescriptor mouse, ref XIRawEvent raw)
+        {
+            MouseState state = mouse.State;
+            double x = 0;
+            double y = 0;
+
+            for (int i = 0; i < mouse.Device.num_classes; i++)
+            {
+                IntPtr pinfo =
+                    Marshal.ReadIntPtr(mouse.Device.classes, i * IntPtr.Size);
+
+                // Make sure the class info pointer is valid
+                if (pinfo == IntPtr.Zero)
+                    continue;
+
+                // We only want to read valuator information
+                XIClassType type = (XIClassType)Marshal.ReadInt32(pinfo);
+                if (type != XIClassType.Valuator)
+                    continue;
+
+                // This is a valuator class, proceed
+                unsafe
+                {
+                    XIValuatorClassInfo vinfo =
+                        *(XIValuatorClassInfo*)pinfo;
+
+                    double range = vinfo.max - vinfo.min;
+                    if (range <= 0.0)
+                        range = 1.0;
+    
+                    if (IsBitSet(raw.valuators.mask, raw.valuators.mask_len, vinfo.number))
+                    {
+                        // Todo: check for "Rel X", "Rel Y" labels
+                        if (vinfo.number == 0 && vinfo.mode == XIValuatorMode.Relative)
+                        {
+                            x = BitConverter.Int64BitsToDouble(Marshal.ReadInt64(raw.valuators.values, 0));
+                            //x /= range;
+                        }
+                        else if (vinfo.number == 1 && vinfo.mode == XIValuatorMode.Relative)
+                        {
+                            y = BitConverter.Int64BitsToDouble(Marshal.ReadInt64(raw.valuators.values, 8));
+                            //y /= range;
+                        }
+                    }
+                }
+            }
+            state.X += (int)Math.Round(x);
+            state.Y += (int)Math.Round(y);
+            return state;
+        }
+
         static bool IsEventValid(IntPtr display, ref XEvent e, IntPtr arg)
         {
             return e.GenericEventCookie.extension == arg.ToInt32() &&
@@ -261,12 +294,18 @@ namespace OpenTK.Platform.X11
                 e.GenericEventCookie.evtype == (int)XIEventType.RawButtonRelease);
         }
 
-        static bool IsBitSet(IntPtr mask, int bit)
+        static bool IsBitSet(IntPtr mask, int mask_len, int bit)
         {
-            unsafe
+            int byte_offset = bit / 8;
+            int bit_offset = bit - (byte_offset * 8);
+            if (bit < 0 || byte_offset >= mask_len)
             {
-                return (*((byte*)mask + (bit >> 3)) & (1 << (bit & 7))) != 0;
+                Debug.Print("[X11] Error: invalid bit offset {0} in XIRawEvent. Possible memory alignment bug.", bit);
+                return false;
             }
+
+            byte b = Marshal.ReadByte(mask, byte_offset);
+            return (b & (1 << bit_offset)) != 0;
         }
     }
 }
