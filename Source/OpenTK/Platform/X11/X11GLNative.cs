@@ -920,11 +920,18 @@ namespace OpenTK.Platform.X11
                                 dx = state.Scroll.X - MouseState.Scroll.X;
                                 dy = state.Scroll.Y - MouseState.Scroll.Y;
                             }
+                            else
+                            {
+                                // High resolution scroll events not supported.
+                                // In this case, dx/dy already contain scrolling
+                                // deltas based on the Button4-7 buttons.
+                                // (The deltas are provided by X11KeyMap.TranslateButton(),
+                                // called above.)
+                                // TL;DR nothing to see here, move on.
+                            }
 
                             if (dx != 0 || dy != 0)
                             {
-                                // High resolution scroll events not supported
-                                // fallback to the old Button4-7 scroll buttons
                                 OnMouseWheel(dx, dy);
                             }
                         }
