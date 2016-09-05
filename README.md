@@ -22,13 +22,13 @@ Features
 
 OpenTK is available for Windows, Linux, Mac OS X, *BSD, SteamOS, Android and iOS. It can be used standalone or integrated into a GUI (Windows.Forms, WPF, GTK+, Qt, VTK, ...)
 
-[Download binaries](http://www.opentk.com) or [NuGet packages](http://www.nuget.org/packages/OpenTK/)
+[Download binaries]( https://opentk.github.io) or [NuGet packages](https://www.nuget.org/packages/OpenTK.Next/1.2.2336.6514-pre)
 
 
 Instructions
 ============
 
-The simplest way to use OpenTK in your project is to install the [NuGet package](http://www.nuget.org/packages/OpenTK/).
+The simplest way to use OpenTK in your project is to install the [NuGet package](https://www.nuget.org/packages/OpenTK.Next/1.2.2336.6514-pre).
 
 Note what installing NuGet package will add reference to OpenTK.dll, but OpenTK.dll.config 
 will not be copied to the project output directory automatically, so you need to add it to your project 
